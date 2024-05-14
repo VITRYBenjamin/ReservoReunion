@@ -1,0 +1,184 @@
+:root{
+    --text: #041c0c;
+    --background: #effdf2;
+    --primary: #66a77a;
+    --secondary: #7ea9f6;
+    --accent: #60cde7;
+}
+
+.mainShape {
+    background-color: #0056b3;
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.IdentifiantShape{
+    background-color: black;
+}
+
+.emailShape {
+    align-items: flex-end;
+    background-color: red;
+    width: 50px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.userEmailShape{
+    background-color: green;
+    padding: 20px;
+    width: 200px;
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    padding-bottom: 50px;
+}
+
+td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    border: 1px solid black;
+}
+
+.ColumsHead{
+    background-color: var(--secondary);
+    height: 50px;
+    text-align: center;
+    color: var(--text);
+}
+
+
+.Center{
+    width: 50%; 
+    margin: 0 auto; 
+}
+
+/* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Styles pour l'en-tête */
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Styles pour les sections */
+section {
+    padding: 40px 0;
+}
+
+.presentation, .features, .testimonials, .cta {
+    background-color: #f9f9f9;
+}
+
+/* Styles pour les témoignages */
+.testimonial {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial p {
+    font-style: italic;
+}
+
+.testimonial cite {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+/* Styles pour le footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.social-links a {
+    display: inline-block;
+    margin-right: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Styles pour les boutons */
+.button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+
+.menu {
+    background-color: #333;
+    padding: 10px 0;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul li {
+    display: inline-block; /* Pour que les éléments soient sur une ligne */
+    background-color: #555; /* Couleur de fond des éléments */
+    padding: 20px 20px; /* Espacement à l'intérieur */
+}
+
+.menu ul li:last-child {
+    margin-right: 0;
+}
+
+.menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Pour ajouter des séparations */
+.menu ul li:not(:last-child) {
+    border-right: 2px solid #777; /* Séparation entre les éléments */
+}
