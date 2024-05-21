@@ -2,7 +2,7 @@
 
 session_start();
 
-require_once('C:\wamp64\www\ReservoReunion\app\views\View.php');
+require_once('app\views\View.php');
 
 class ControllerReservation {
     

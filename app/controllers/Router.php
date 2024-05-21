@@ -9,7 +9,7 @@ class Router
 
         try {
             spl_autoload_register(function ($class) {
-                require_once 'C:\\wamp64\\www\\ReservoReunion\\app\\models\\' . $class . '.php';
+                require_once 'app\\models\\' . $class . '.php';
             });            
         
             $url ='';
@@ -19,7 +19,7 @@ class Router
 
                 $controller = ucfirst(strtolower($url[0]));
                 $controllerClass = "Controller".$controller;
-                $controllerFile = "C:\wamp64\www\ReservoReunion\app\controllers\\".$controllerClass.".php";
+                $controllerFile = "app\controllers\\".$controllerClass.".php";
                 
                 if (file_exists($controllerFile)) {
                     require_once($controllerFile);
@@ -28,13 +28,13 @@ class Router
                     throw new Exception("Page introuvable", 404);
                 }
             }else {
-                require_once('C:\wamp64\www\ReservoReunion\app\controllers\ControllerHome.php');
+                require_once('app\controllers\ControllerHome.php');
                 $this->_ctrl = new ControllerHome($url);
             }
 
         } catch (Exception $e) {
             $errorMsg = $e->getMessage();
-            require_once('C:\wamp64\www\ReservoReunion\app\views\viewError.php');
+            require_once('app\views\viewError.php');
         }
     }
 }

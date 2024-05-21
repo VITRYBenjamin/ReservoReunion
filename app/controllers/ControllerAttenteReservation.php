@@ -2,11 +2,11 @@
 
 session_start();
 
-require_once('C:\wamp64\www\ReservoReunion\app\views\View.php');
+require_once('app\views\View.php');
 
-require_once('C:\wamp64\www\ReservoReunion\app\models\ManagerEquipement.php');
-require_once('C:\wamp64\www\ReservoReunion\app\models\ManagerService.php');
-require_once('C:\wamp64\www\ReservoReunion\app\models\ManagerLieu.php');
+require_once('app\models\ManagerEquipement.php');
+require_once('app\models\ManagerService.php');
+require_once('app\models\ManagerLieu.php');
 
 class ControllerAttenteReservation {
     
