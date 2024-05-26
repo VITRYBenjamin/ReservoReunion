@@ -1,25 +1,20 @@
 <?php
 
-require_once('app\views\View.php');
+
 
 class ControllerHome {
 
-    private $_managerHome;
     private $_view;
 
-    public function __construct($url){
-        if((!empty($url) && count($url) > 1)){
-            throw new Exception("Page introuvable", 1);
-        } else {
-            $this->home();
-        }
+    public function __construct() {
+        
     }
-    
 
-    private function home(){
+    public function home() {
+        require_once('app/views/View.php');
+        
         $this->_view = new View('Home');
-        $this->_view->generate(array('info' => "aucune"));
+        $this->_view->generate(array('info' => 'aucune'));
     }
 }
-
 ?>

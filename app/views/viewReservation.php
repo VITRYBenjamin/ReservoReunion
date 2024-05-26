@@ -1,6 +1,12 @@
-<form action="index.php?url=attenteReservation" method="post">
-    
+<form action="index.php?url=reservation/recapReservation" method="post" onsubmit="return validateForm()">
     <div class="Center">
+        <h2> 
+            <?php 
+                if (isset($message)) {
+                    echo $message;
+                }
+            ?>
+        </h2>
         <h1> Tableau récapitulatif des lieux</h1>
 
         <table>
@@ -16,7 +22,7 @@
                     <td>".$lieu->getNom()."</td>
                     <td>".$lieu->getDescr()."</td>
                     <td>".$lieu->getPrix()."</td>
-                    <td><input type='checkbox' id='".$lieu->getAlias()."' name='".$lieu->getAlias()."'></td>
+                    <td><input type='checkbox' class='lieu' id='".$lieu->getAlias()."' name='".$lieu->getAlias()."'></td>
                 </tr>";
                 }
             ?>
@@ -41,7 +47,7 @@
                     <td>".$equipement->getNom()."</td>
                     <td>".$equipement->getDescr()."</td>
                     <td>".$equipement->getPrix()."</td>
-                    <td><input type='number' id='".$equipement->getAlias()."' name='".$equipement->getAlias()."' max=4 min=0 value=0></td>
+                    <td><input type='number' class='equipement' id='".$equipement->getAlias()."' name='".$equipement->getAlias()."' max=4 min=0></td>
                 </tr>";
                 }
             ?>
@@ -65,7 +71,7 @@
                     <td>".$service->getNom()."</td>
                     <td>".$service->getDescr()."</td>
                     <td>".$service->getPrix()."</td>
-                    <td><input type='checkbox' id='".$service->getAlias()."' name='".$service->getAlias()."'></td>
+                    <td><input type='checkbox' class='service' id='".$service->getAlias()."' name='".$service->getAlias()."'></td>
                 </tr>";
                 }
             ?>
@@ -108,7 +114,77 @@
         <p>* Champs obligatoires.</p>
 
         <br><br>
-        <input class='button-like' type='submit' value='Vérifier votre matériel'>
+        <?php 
+            if (isset($_SESSION['id'])) {
+                echo "<input class='button' type='submit' value='Vérifier votre matériel'>";
+            } else {
+                echo "Vous devez vous inscrire pour utiliser notre système de réservation. <br>
+                Vous pouvez le faire ici : <a href='index.php?url=utilisateur/register' class='button'>Inscrivez-vous maintenant</a>";         
+            }
+        ?>
+        
         <br><br>
     </div>
 </form>
+
+<!-- Script JavaScript pour la validation du formulaire -->
+<script>
+    function validateForm() {
+        var selectedDate = new Date(document.getElementById('DayRes').value);
+        var currentDate = new Date();
+
+        if (selectedDate < currentDate) {
+            alert('La date de réservation doit être ultérieure ou égale à la date actuelle.');
+            return false;
+        }
+
+        var startTime = document.getElementById('StartRes').value;
+        var endTime = document.getElementById('EndRes').value;
+
+        if (startTime >= endTime) {
+            alert('L\'heure de début doit être antérieure à l\'heure de fin.');
+            return false;
+        }
+
+        // Vérification qu'au moins un élément des services est sélectionné
+        var services = document.getElementsByClassName('service');
+        var serviceSelected = false;
+
+        for (var i = 0; i < services.length; i++) {
+            if (services[i].checked) {
+                serviceSelected = true;
+                break;
+            }
+        }
+
+        // Vérification qu'au moins un élément des équipements est rempli
+        var equipements = document.getElementsByClassName('equipement');
+        var equipementFilled = false;
+
+        for (var i = 0; i < equipements.length; i++) {
+            if (equipements[i].value > 0) {
+                equipementFilled = true;
+                break;
+            }
+        }
+
+        // Vérification qu'au moins un élément des lieux est sélectionné
+        var lieux = document.getElementsByClassName('lieu');
+        var lieuSelected = false;
+
+        for (var i = 0; i < lieux.length; i++) {
+            if (lieux[i].checked) {
+                lieuSelected = true;
+                break;
+            }
+        }
+
+        if (!serviceSelected && !equipementFilled && !lieuSelected) {
+            alert('Veuillez sélectionner au moins un élément à réserver.');
+            return false;
+        }
+
+        // Si toutes les validations passent, le formulaire peut être soumis
+        return true;
+    }
+</script>

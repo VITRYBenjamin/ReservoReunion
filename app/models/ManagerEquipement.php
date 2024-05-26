@@ -1,4 +1,5 @@
 <?php
+require_once('app/models/Model.php');
 
 class ManagerEquipement extends Model{
 
@@ -6,16 +7,15 @@ class ManagerEquipement extends Model{
         return $this->getAllFromTable('equipement','Equipement');
     }
 
-    public function getEquipement(){
-        $query = "SELECT * FROM equipement";
+    public function getEquipement($id){
+        $query = "SELECT * FROM equipement WHERE id = ?";
+
+        $stmt = self::getBdd()->prepare($query);
         
-        $stmt = self::getBdd()->query($query);
-        
-        $results = [];
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $results[] = new $className($row);
-        }
-        return $results;
+        $stmt->execute([$id]);
+
+        $resultat = $stmt->fetch();
+        return $resultat;
     }
 }
 ?>

@@ -1,10 +1,13 @@
 <?php
+require_once('app/models/Model.php');
+
 class Utilisateur {
     public $_id;
     public $_nom;
     public $_prenom;
     public $_email;
     public $_phone;
+    public $_pwd;
 
     // Constructeur
     public function __construct(array $data) {
@@ -32,6 +35,8 @@ class Utilisateur {
 
     public function setPhone(string $phone)     {$this->_phone = $phone;}
 
+    public function setPwd(string $pwd)         {$this->_pwd = $pwd;}
+
     // getters
     public function getId()     {return $this->_id;}
 
@@ -42,5 +47,7 @@ class Utilisateur {
     public function getEmail()  {return $this->_email;}
     
     public function getPhone()  {return $this->_phone;}
+
+    public function getPwd()    {return $this->_pwd;}
 
 }

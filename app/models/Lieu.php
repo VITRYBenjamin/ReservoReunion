@@ -1,4 +1,6 @@
 <?php
+require_once('app/models/Model.php');
+
 class Lieu{
     public $_id;
     public $_alias;

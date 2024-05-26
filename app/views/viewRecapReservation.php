@@ -1,13 +1,4 @@
-<?php
-
-$_SESSION['DayRes']   = $_POST['DayRes'];
-$_SESSION['StartRes'] = $_POST['StartRes'];
-$_SESSION['EndRes']   = $_POST['EndRes'];
-$_SESSION['Remarque'] = $_POST['Remarque'];
-
-?>
-
-<form action="index.php?url=validationReservation" method="post">
+<form action="index.php?url=reservation/insertReservation" method="post">
     
     <?php 
         $total = 0;
@@ -30,9 +21,9 @@ $_SESSION['Remarque'] = $_POST['Remarque'];
                             <td>'.$lieu->getNom().'</td>
                             <td>'.$lieu->getDescr().'</td>
                             <td>'.$lieu->getPrix().'</td>
-                            <td>'. $retVal = ($lieuxQ[$i] == 0) ? "oui" : "non".'</td>
+                            <td> oui </td>
                         </tr>';
-                        $total += $lieu->getPrix()*$lieuxQ[$i];
+                        $total += $lieu->getPrix()*1;
                         $i++;
                     }
                         echo "
@@ -89,9 +80,9 @@ $_SESSION['Remarque'] = $_POST['Remarque'];
                         <td>'.$service->getNom().'</td>
                         <td>'.$service->getDescr().'</td>
                         <td>'.$service->getPrix().'</td>
-                        <td>'. $retVal = ($servicesQ[$i] == 0) ? "oui" : "non".'</td>
+                        <td> oui </td>
                     </tr>';
-                    $total += $service->getPrix()*$servicesQ[$i];
+                    $total += $service->getPrix()*1;
                     $i++;
                     }
                     echo"
@@ -116,25 +107,26 @@ $_SESSION['Remarque'] = $_POST['Remarque'];
             <tbody>
                 <tr>
                     <td>Date de réservation</td>
-                    <td> <?= $_POST['DayRes'] ?> </td>
+                    <td> <?= $_SESSION['DayRes']  ?> </td>
                 </tr>
                 <tr>
                     <td>Heure de début*</td>
-                    <td> <?= $_POST['StartRes'] ?> </td>
+                    <td> <?= $_SESSION['StartRes'] ?> </td>
                 </tr>
                 <tr>
                     <td>Heure de Fin</td>
-                    <td> <?= $_POST['EndRes'] ?> </td>
+                    <td> <?= $_SESSION['EndRes'] ?> </td>
                 </tr>
                 <tr>
                     <td>Remarque</td>
-                    <td> <?= $_POST['Remarque'] ?> </td>
+                    <td> <?= $_SESSION['Remarque'] ?> </td>
                 </tr>
             </tbody>
         </table>
 
         <br><br>
-        <input class='button-like' type='submit' value='Validez ma commande'>
+        <a href='index.php?url=reservation/newReservation' class='button'>Revenir en arrière.</a>
+        <input class='button' type='submit' value='Validez ma commande'>
         <br><br>
     </div>
 </form>

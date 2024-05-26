@@ -6,7 +6,7 @@ Class View{
 
     public function __construct($action){
 
-        $this->_file = 'C:\wamp64\www\ReservoReunion\app\views\view'.$action.'.php';
+        $this->_file = 'app/views/view'.$action.'.php';
 
     }
 
@@ -17,7 +17,7 @@ Class View{
         $content = $this->generateFile($this->_file, $data);
 
         // template
-        $view = $this->generateFile('C:\wamp64\www\ReservoReunion\app\views\template.php', 
+        $view = $this->generateFile('app/views/template.php', 
         array('t'=> $this->_t,'content'=> $content));
 
         echo $view;

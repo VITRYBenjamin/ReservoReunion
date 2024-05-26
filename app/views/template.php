@@ -4,27 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page d'Accueil</title>
-    <link rel="stylesheet" href="../public/css/styles.css">
+    <link rel="stylesheet" href="public/css/styles.css">
+
 </head>
 
 <header>
-    <nav class="menu">
-        <ul>
-            <li><a href="<?= URL ?>">Accueil</a></li>
-            <li><a href="index.php?url=reservation">Réservation</a></li>
-            <li>
-                <?php 
-                    if (isset($_SESSION['User'])) {
-                        echo "<a href='index.php?url=profil'>Espace client</a>";
-                    } else {
-                        echo "<a href='index.php?url=connexion'>Espace client</a>";
-                    }
-                    
-                ?>
-            </li>
-        </ul>
-    </nav>
+    <div class="nav-wrapper">
+        <div class="menu">
+            <ul>
+                <li><a href="index.php?url=home/home">Accueil</a></li>
+                <li><a href="index.php?url=reservation/newReservation">Réservation</a></li>
+                <li>
+                    <?php 
+                        if (isset($_SESSION['id'])) {
+                            echo "<a href='index.php?url=utilisateur/utilisateur'>Espace client</a>";
+                        } else {
+                            echo "<a href='index.php?url=utilisateur/login'>Espace client</a>";
+                        }
+                    ?>
+                </li>
+            </ul>
+        </div>
+        <div class="login-button">
+            <?php 
+                if (isset($_SESSION['id'])) {
+                    echo "<a href='index.php?url=utilisateur/logout' class='button'>Se déconnecter</a>";
+                } else {
+                    echo "<a href='index.php?url=utilisateur/login' class='button'>Se connecter</a>";
+                }
+            ?>
+        </div>
+    </div>
 </header>
+
 
 <body>
 

@@ -1,4 +1,9 @@
 <?php
+
+require_once('app/models/Equipement.php');
+require_once('app/models/Service.php');
+require_once('app/models/Lieu.php');
+
 abstract class Model{
     private static $_bdd;
 
@@ -6,10 +11,10 @@ abstract class Model{
     private static function setBdd(){
         
         // Paramètres de connexion à la base de données
-        $dbHost = 'localhost';          // Hôte de la base de données
-        $dbName = 'reservoreunion';     // Nom de la base de données
-        $dbUser = 'benjamin';           // Nom d'utilisateur de la base de données
-        $dbPass = 'Abcd_1234';          // Mot de passe de la base de données
+        $dbHost = 'mysql-reservoreunion.alwaysdata.net';          // Hôte de la base de données
+        $dbName = 'reservoreunion_bdd';     // Nom de la base de données
+        $dbUser = '358927';           // Nom d'utilisateur de la base de données
+        $dbPass = 'Mot_De_Pass974';          // Mot de passe de la base de données
 
         // Connexion à la base de données avec PDO
         try {
