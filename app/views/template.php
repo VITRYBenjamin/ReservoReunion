@@ -47,15 +47,15 @@
 <footer>
 <nav>
     <ul>
-        <li><a href="politique-confidentialite.html">Politique de Confidentialité</a></li>
-        <li><a href="conditions-utilisation.html">Conditions d'Utilisation</a></li>
-        <li><a href="contact.html">Contactez-nous</a></li>
+        <li><a href="">Politique de Confidentialité</a></li>
+        <li><a href="">Conditions d'Utilisation</a></li>
+        <li><a href="">Contactez-nous</a></li>
     </ul>
 </nav>
 <div class="social-links">
-    <a href="#" class="social-icon">Facebook</a>
-    <a href="#" class="social-icon">Twitter</a>
-    <a href="#" class="social-icon">Instagram</a>
+    <a href="" class="social-icon">Facebook</a>
+    <a href="" class="social-icon">Twitter</a>
+    <a href="" class="social-icon">Instagram</a>
 </div>
 </footer>
 </html>

@@ -4,17 +4,24 @@ require_once('app/models/Equipement.php');
 require_once('app/models/Service.php');
 require_once('app/models/Lieu.php');
 
+/**
+ * Class Model
+ * 
+ * Classe abstraite définissant les méthodes communes pour l'accès à la base de données.
+ */
 abstract class Model{
-    private static $_bdd;
+    private static $_bdd; /**< Instance de connexion à la base de données. */
 
-    // Méthode pour instancier la connexion à la base de données
+    /**
+     * Méthode pour initialiser la connexion à la base de données.
+     */
     private static function setBdd(){
         
         // Paramètres de connexion à la base de données
-        $dbHost = 'mysql-reservoreunion.alwaysdata.net';          // Hôte de la base de données
-        $dbName = 'reservoreunion_bdd';     // Nom de la base de données
-        $dbUser = '358927';           // Nom d'utilisateur de la base de données
-        $dbPass = 'Mot_De_Pass974';          // Mot de passe de la base de données
+        $dbHost = 'mysql-reservoreunion.alwaysdata.net';    // Hôte de la base de données
+        $dbName = 'reservoreunion_bdd';                     // Nom de la base de données
+        $dbUser = '358927';                                 // Nom d'utilisateur de la base de données
+        $dbPass = 'Mot_De_Pass974';                         // Mot de passe de la base de données
 
         // Connexion à la base de données avec PDO
         try {
@@ -26,7 +33,11 @@ abstract class Model{
         }
     }
 
-    // Méthode pour récupérer l'instance de la connexion à la base de données
+    /**
+     * Méthode pour récupérer l'instance de la connexion à la base de données.
+     * 
+     * @return PDO Instance de connexion à la base de données.
+     */
     protected static function getBdd() {
         // Vérifie si la connexion à la base de données a déjà été établie
         if (self::$_bdd === null) {
@@ -37,7 +48,13 @@ abstract class Model{
         return self::$_bdd;
     }
 
-    // Méthode pour récupérer tous les enregistrements d'une table sous forme d'objets d'une classe spécifique
+    /**
+     * Méthode pour récupérer tous les enregistrements d'une table sous forme d'objets d'une classe spécifique.
+     * 
+     * @param string $tableName Nom de la table.
+     * @param string $className Nom de la classe des objets à créer.
+     * @return array Tableau d'objets de la classe spécifiée.
+     */
     public static function getAllFromTable($tableName, $className) {
         $query = "SELECT * FROM $tableName";
         

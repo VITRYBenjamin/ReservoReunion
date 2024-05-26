@@ -25,7 +25,7 @@
     </form>
     
     <section class="">
-    <h2>Vous n'avez pas de compte ? inscrivez-vous</h2>
+    <h2>Vous n'avez pas de compte ? Inscrivez-vous !</h2>
     <a href="index.php?url=utilisateur/register" class="button">Inscrivez-vous maintenant</a>
 </section>
 </div>

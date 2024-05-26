@@ -6,7 +6,7 @@
 
 <div style="margin-left: 5vw;">
     <section class="presentation">
-        <h2>À propos de notre application</h2>
+        <h2>À propos de l'application</h2>
         <p>Ici, vous pouvez ajouter une brève présentation de votre application et ses fonctionnalités principales.</p>
     </section>
 
@@ -20,7 +20,6 @@
             <h3>Fonctionnalité 2</h3>
             <p>Description de la fonctionnalité 2</p>
         </div>
-        <!-- Ajoutez d'autres fonctionnalités ici -->
     </section>
 
     <section class="testimonials">
@@ -29,7 +28,6 @@
             <p>"Témoignage 1 de client satisfait"</p>
             <cite>Nom du Client</cite>
         </div>
-        <!-- Ajoutez d'autres témoignages ici -->
     </section>
 
     <section class="cta">

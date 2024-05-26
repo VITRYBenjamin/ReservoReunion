@@ -4,23 +4,44 @@ require_once 'app/models/Equipement.php';
 require_once 'app/models/Service.php';
 include_once 'app/models/Lieu.php';
 
+/**
+ * Class ManagerReservation
+ * 
+ * Manages reservations including operations like fetching reservations, inserting reservations, and retrieving reservation information.
+ */
 class ManagerReservation extends Model{
 
-    private $_managerEquipement;
-    private $_managerService;
-    private $_managerLieu;
+    private $_managerEquipement; /**< ManagerEquipement instance for handling equipment operations. */
+    private $_managerService; /**< ManagerService instance for handling service operations. */
+    private $_managerLieu; /**< ManagerLieu instance for handling location operations. */
 
 
+    /**
+     * Constructor for ManagerReservation class.
+     * 
+     * Initializes ManagerService, ManagerLieu, and ManagerEquipement instances.
+     */
     public function __construct() {
         $this->_managerService = new ManagerService();
         $this->_managerLieu = new ManagerLieu();
         $this->_managerEquipement = new ManagerEquipement();
     }
 
+    /**
+     * Retrieves all reservations from the database.
+     * 
+     * @return array Array of reservations.
+     */
     public function getReservations(){
         return $this->getAllFromTable('reservation','Reservation');
     }
 
+    /**
+     * Retrieves reservations associated with a specific user.
+     * 
+     * @param int $id User ID.
+     * @return array Array of reservations associated with the user.
+     */
     public function getReservationsUser($id){
         $reservationsUsers = [];
 
@@ -38,6 +59,12 @@ class ManagerReservation extends Model{
         return $reservationsUsers;
     }
 
+    /**
+     * Retrieves information about a specific reservation.
+     * 
+     * @param int $id Reservation ID.
+     * @return array Information about the reservation.
+     */
     public function getReservation($id){
         $query = "SELECT * FROM reservation WHERE id=?";
         
@@ -49,6 +76,11 @@ class ManagerReservation extends Model{
         return $result;
     }
 
+    /**
+     * Retrieves the ID of the last reservation made.
+     * 
+     * @return int ID of the last reservation.
+     */
     public function getLastReservation(){
         $query = "SELECT id FROM reservation ORDER BY id DESC LIMIT ?";
         
@@ -59,6 +91,11 @@ class ManagerReservation extends Model{
         return $result[0];
     }
 
+    /**
+     * Inserts a new reservation into the database.
+     * 
+     * @return mixed Result of the insertion operation.
+     */
     public function insertReservation(){
 
         if(!isset($_SESSION['lieux']) && !isset($_SESSION['equipements']) && !isset($_SESSION['services'])){
@@ -102,6 +139,12 @@ class ManagerReservation extends Model{
         return $retVal;
     }
 
+    /**
+     * Retrieves a list of reservations associated with a specific user.
+     * 
+     * @param int $id User ID.
+     * @return array List of reservations associated with the user.
+     */
     public function getReservationsList($id){
         
         $query = "SELECT r.id
@@ -114,6 +157,13 @@ class ManagerReservation extends Model{
         return $result;
     }
 
+    /**
+     * Retrieves information about a specific reservation, including equipment, location, and service details.
+     * 
+     * @param int $reservation Reservation ID.
+     * @param int $id User ID.
+     * @return array Information about the reservation.
+     */
     public function getReservationInformation($reservation,$id){
         $query = "SELECT 'equipement' AS `type_item`, `id_equipement` AS `id_item`, `quantite` 
         FROM `reservation_equipement`
@@ -132,7 +182,7 @@ class ManagerReservation extends Model{
         SELECT 'service' AS `type_item`, `id_service` AS `id_item`, NULL AS `quantite` 
         FROM `reservation_service`
         INNER JOIN `reservation` r ON r.id = id_reservation
-        WHERE r.id = ? AND r.id_utilisateur = ?;
+        WHERE r.id = ? AND r.id_utilisateur = ?
         ";
 
         $params = [$reservation,$id, $reservation,$id, $reservation,$id];

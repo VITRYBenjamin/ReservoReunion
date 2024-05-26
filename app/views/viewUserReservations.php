@@ -19,7 +19,7 @@
         </tbody>
     </table>
 
-    <h2>Equipement réserver</h2>
+    <h2>Équipement réserver</h2>
     <table>
         <thead>
             <tr>
