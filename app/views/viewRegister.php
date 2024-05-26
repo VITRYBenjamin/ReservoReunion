@@ -18,7 +18,7 @@
         <br>
         <div>
             <label for="phone">Téléphone :</label>
-            <input type="tel" id="phone" name="phone" required>
+            <input type="tel" id="phone" pattern="^(?:\+(?:\d\s?){1,3}(?:[\s.-]?\d{2,3}){1,3})$" name="phone" required>
         </div>
         <br>
         <div>
